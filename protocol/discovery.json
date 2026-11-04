@@ -2,7 +2,7 @@
   "accepted_wire_format": "utf-8-json",
   "ciir_isolation": "UNSUPPORTED_PHYSICAL_MECHANISM",
   "identifier": "TIMELINE-SLIP-TS001",
-  "manifest_version": "0.7.0",
+  "manifest_version": "0.7.1",
   "message_profile": {
     "max_envelope_bytes": 32768,
     "max_payload_bytes": 1048576,
@@ -13,14 +13,14 @@
   "project": "TIMELINE_SLIP",
   "protocol": "TRP-01",
   "publication_profile": "offline-verifiable",
-  "receiver_status": "NOT_DEPLOYED",
-  "receiver_url": null,
+  "receiver_status": "PUBLIC_HUMAN_REVIEW_CHANNEL_ONLY",
+  "receiver_url": "https://github.com/jasonlagee-creator/timeline-slip/issues/1",
   "request_id": "TS-001",
   "requested_capabilities": [
     "backward_information_transfer",
     "ciir_interface_specification",
     "independent_verification"
   ],
-  "warning": "No known mechanism for backward temporal communication.",
+  "warning": "GitHub issue comments are ordinary unverified submissions, not a temporal receiver. No known mechanism for backward temporal communication.",
   "working_hypothesis": "single_mutable_timeline_hypothetical"
 }
