@@ -1,0 +1,26 @@
+{
+  "accepted_wire_format": "utf-8-json",
+  "ciir_isolation": "UNSUPPORTED_PHYSICAL_MECHANISM",
+  "identifier": "TIMELINE-SLIP-TS001",
+  "manifest_version": "0.7.0",
+  "message_profile": {
+    "max_envelope_bytes": 32768,
+    "max_payload_bytes": 1048576,
+    "protocol": "TRP-01",
+    "version": "0.2.0"
+  },
+  "payload_encoding": "raw-binary",
+  "project": "TIMELINE_SLIP",
+  "protocol": "TRP-01",
+  "publication_profile": "offline-verifiable",
+  "receiver_status": "NOT_DEPLOYED",
+  "receiver_url": null,
+  "request_id": "TS-001",
+  "requested_capabilities": [
+    "backward_information_transfer",
+    "ciir_interface_specification",
+    "independent_verification"
+  ],
+  "warning": "No known mechanism for backward temporal communication.",
+  "working_hypothesis": "single_mutable_timeline_hypothetical"
+}
