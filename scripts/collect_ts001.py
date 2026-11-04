@@ -16,7 +16,9 @@ headers = {"Accept": "application/vnd.github+json", "User-Agent": "timeline-slip
 if token:
     headers["Authorization"] = "Bearer " + token
 
-KNOWN_SYNTHETIC_COMMENT_IDS = {6623176386}\n\nrecords = []
+KNOWN_SYNTHETIC_COMMENT_IDS = {6623176386}
+
+records = []
 url = f"https://api.github.com/repos/{REPO}/issues/{ISSUE}/comments?per_page=100&page="
 for page in range(1, 101):
     req = urllib.request.Request(url + str(page), headers=headers)
