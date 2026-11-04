@@ -16,14 +16,7 @@ headers = {"Accept": "application/vnd.github+json", "User-Agent": "timeline-slip
 if token:
     headers["Authorization"] = "Bearer " + token
 
-KNOWN_SYNTHETIC_COMMENT_IDS = {6623176386}
-
-def classify_comment(comment):
-    """Classify only preregistered test IDs from the expected account."""
-    if (comment.get("id") in KNOWN_SYNTHETIC_COMMENT_IDS
-            and (comment.get("user") or {}).get("login") == "jasonlagee-creator"):
-        return "synthetic_test"
-    return "unverified_submission"
+from classification import classify_comment
 
 records = []
 url = f"https://api.github.com/repos/{REPO}/issues/{ISSUE}/comments?per_page=100&page="
