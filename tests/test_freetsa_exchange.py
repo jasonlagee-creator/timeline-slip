@@ -1,7 +1,7 @@
 import hashlib
 import unittest
 from unittest.mock import patch
-from scripts.freetsa_exchange import fetch_pinned, CERTS
+from scripts.freetsa_exchange import fetch_pinned, CERTS, require_approved_pins
 
 class Response:
     def __enter__(self): return self
@@ -23,7 +23,12 @@ class FreeTSAPinningTests(unittest.TestCase):
         self.assertEqual(len(CERTS), 2)
         for url, digest in CERTS.values():
             self.assertTrue(url.startswith("https://freetsa.org/files/"))
-            self.assertEqual(len(digest), 64)
+            self.assertIn(len(digest), (0, 64))
+
+    def test_unapproved_pins_fail_closed(self):
+        if any(not digest for _, digest in CERTS.values()):
+            with self.assertRaises(ValueError):
+                require_approved_pins()
 
 if __name__ == "__main__":
     unittest.main()
