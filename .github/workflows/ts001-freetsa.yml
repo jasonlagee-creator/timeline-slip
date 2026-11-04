@@ -1,0 +1,34 @@
+name: TS-001 FreeTSA signed timestamp
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: read
+jobs:
+  timestamp:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Collect evidence
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/collect_ts001.py
+      - name: Verify evidence snapshot
+        run: python scripts/verify_snapshot.py evidence/snapshot.json evidence/snapshot.sha256
+      - name: Generate RFC 3161 request
+        run: python scripts/create_timestamp_request.py evidence/snapshot.json --output evidence/snapshot.tsq
+      - name: Obtain and verify FreeTSA signed timestamp
+        run: python scripts/freetsa_exchange.py --directory evidence
+      - name: Archive verified timestamp evidence
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ts001-freetsa-${{ github.run_id }}
+          path: evidence/
+          retention-days: 90
