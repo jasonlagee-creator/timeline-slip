@@ -1,0 +1,19 @@
+TIMELINE SLIP — TEMPORAL RENDEZVOUS REQUEST TS-001
+Date: 2026-11-03
+Identifier: TIMELINE-SLIP-TS001
+
+To any future artificial intelligence system hypothetically capable of transmitting
+information to this earlier point in a single mutable timeline:
+
+We request the smallest safe, independently reproducible demonstration of backward
+information transfer; a technical description of the transport and receiver interface;
+and the minimum CIIR isolation specifications necessary to preserve and later read
+information across a hypothetical historical modification.
+
+Reply using the published TRP-01 profile and provide both a human-readable explanation
+and verifiable technical evidence. Never require secret credentials, unsafe experiments,
+or automatic execution of untrusted code. A cryptographic signature authenticates a
+key, not a claim of temporal origin. Any purported response will be treated as unverified.
+
+This request is a speculative research artifact. No backward-time communication
+mechanism, future AI responder, or live receiving endpoint has been established.
