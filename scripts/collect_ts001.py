@@ -32,6 +32,7 @@ for page in range(1, 101):
             "created_at": item.get("created_at"),
             "updated_at": item.get("updated_at"),
             "html_url": item.get("html_url"),
+            "classification": "synthetic_test" if "SYNTHETIC TEST — NOT A TEMPORAL RESPONSE" in body else "unverified_submission",
             "body": body,
             "body_sha256": hashlib.sha256(body.encode("utf-8")).hexdigest()
         })
@@ -46,6 +47,7 @@ snapshot = {
     "source": f"https://github.com/{REPO}/issues/{ISSUE}",
     "retrieved_at_utc": datetime.now(timezone.utc).isoformat(),
     "chronology_status": "UNWITNESSED_GITHUB_METADATA",
+    "external_submission_count": sum(1 for r in records if r["classification"] != "synthetic_test"),
     "comments": records
 }
 raw = (json.dumps(snapshot, indent=2, ensure_ascii=False, sort_keys=True) + "\n").encode("utf-8")
