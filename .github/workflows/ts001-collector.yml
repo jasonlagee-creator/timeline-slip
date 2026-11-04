@@ -27,6 +27,8 @@ jobs:
         run: python scripts/prepare_witness.py evidence/snapshot.json --output evidence/witness-request.json
       - name: Verify witness request against captured bytes
         run: python scripts/verify_witness.py evidence/snapshot.json evidence/witness-request.json
+      - name: Generate unsigned RFC 3161 timestamp request
+        run: python scripts/create_timestamp_request.py evidence/snapshot.json --output evidence/snapshot.tsq
       - name: Archive snapshot as workflow artifact
         uses: actions/upload-artifact@v4
         with:
