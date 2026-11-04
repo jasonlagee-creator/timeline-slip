@@ -16,7 +16,7 @@ headers = {"Accept": "application/vnd.github+json", "User-Agent": "timeline-slip
 if token:
     headers["Authorization"] = "Bearer " + token
 
-records = []
+KNOWN_SYNTHETIC_COMMENT_IDS = {6623176386}\n\nrecords = []
 url = f"https://api.github.com/repos/{REPO}/issues/{ISSUE}/comments?per_page=100&page="
 for page in range(1, 101):
     req = urllib.request.Request(url + str(page), headers=headers)
@@ -32,7 +32,7 @@ for page in range(1, 101):
             "created_at": item.get("created_at"),
             "updated_at": item.get("updated_at"),
             "html_url": item.get("html_url"),
-            "classification": "synthetic_test" if "SYNTHETIC TEST — NOT A TEMPORAL RESPONSE" in body else "unverified_submission",
+            "classification": "synthetic_test" if item["id"] in KNOWN_SYNTHETIC_COMMENT_IDS and (item.get("user") or {}).get("login") == "jasonlagee-creator" else "unverified_submission",
             "body": body,
             "body_sha256": hashlib.sha256(body.encode("utf-8")).hexdigest()
         })
