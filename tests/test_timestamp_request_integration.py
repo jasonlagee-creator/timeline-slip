@@ -1,5 +1,6 @@
 import hashlib
 import pathlib
+import re
 import shutil
 import subprocess
 import tempfile
