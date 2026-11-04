@@ -1,0 +1,1 @@
+GitHub Pages source files. To publish, configure Settings > Pages > Deploy from a branch > main > /docs. Until Pages is enabled, these files are available only in the repository. The public page does not host a receiver; submissions use GitHub Issue #1.
