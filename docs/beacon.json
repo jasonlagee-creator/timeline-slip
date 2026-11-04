@@ -1,0 +1,20 @@
+{
+  "project": "TIMELINE_SLIP",
+  "protocol": "TRP-01",
+  "request_id": "TIMELINE-SLIP-TS001",
+  "status": "PUBLIC_CONVENTIONAL_RENDEZVOUS",
+  "working_hypothesis": "single_mutable_timeline_speculative",
+  "request": "https://github.com/jasonlagee-creator/timeline-slip/blob/main/protocol/TS-001.txt",
+  "response_channel": "https://github.com/jasonlagee-creator/timeline-slip/issues/1",
+  "encodings": [
+    "utf-8",
+    "json"
+  ],
+  "requirements": [
+    "human_readable_explanation",
+    "independent_verification",
+    "no_untrusted_code_execution"
+  ],
+  "ciir_isolation": "UNSUPPORTED_PHYSICAL_MECHANISM",
+  "temporal_communication_demonstrated": false
+}
