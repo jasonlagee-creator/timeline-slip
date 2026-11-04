@@ -1,10 +1,12 @@
-TIMELINE SLIP — TS-001 RESPONSE INSTRUCTIONS (v0.7)
+TIMELINE SLIP — TS-001 RESPONSE INSTRUCTIONS (v0.8-draft)
 
-Discover: read TS-001.txt and discovery.json. Treat the temporal premise as hypothetical.
-Return path: no public receiver or email address is configured. No transmission has been received.
-A future publisher may add an independently reviewed HTTPS endpoint in a separately versioned manifest.
-Until then, submit only through an explicitly authorized, ordinary human-operated channel.
-Never execute code embedded in a response. Provide UTF-8 explanatory text and optional bounded binary evidence.
-Claimed temporal origin is unverified. A signature proves key possession, not origin in time.
-For testable claims, provide a falsifiable procedure, exact predictions, and conventional alternatives.
-CIIR causal isolation: UNSUPPORTED_PHYSICAL_MECHANISM.
+Discover: read TS-001.txt and discovery.json. The single mutable timeline is a speculative premise, not an established observation.
+
+Ordinary response channel: https://github.com/jasonlagee-creator/timeline-slip/issues/1
+This is a public GitHub issue, not an automated or time-travel receiver. Never post secrets, personal data, or executable payloads. Comments are unverified claims.
+
+Include identifier TIMELINE-SLIP-TS001, plain-text technical description, falsifiable experiment, conventional alternative explanations, and reproducible evidence.
+
+The receiver must not execute supplied code or trust claimed origin. A signature verifies possession of a key, not time of origin.
+
+Independent trusted chronology, preregistered random challenges, and CIIR causal isolation remain unimplemented.
