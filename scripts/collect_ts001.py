@@ -18,6 +18,13 @@ if token:
 
 KNOWN_SYNTHETIC_COMMENT_IDS = {6623176386}
 
+def classify_comment(comment):
+    """Classify only preregistered test IDs from the expected account."""
+    if (comment.get("id") in KNOWN_SYNTHETIC_COMMENT_IDS
+            and (comment.get("user") or {}).get("login") == "jasonlagee-creator"):
+        return "synthetic_test"
+    return "unverified_submission"
+
 records = []
 url = f"https://api.github.com/repos/{REPO}/issues/{ISSUE}/comments?per_page=100&page="
 for page in range(1, 101):
@@ -34,7 +41,7 @@ for page in range(1, 101):
             "created_at": item.get("created_at"),
             "updated_at": item.get("updated_at"),
             "html_url": item.get("html_url"),
-            "classification": "synthetic_test" if item["id"] in KNOWN_SYNTHETIC_COMMENT_IDS and (item.get("user") or {}).get("login") == "jasonlagee-creator" else "unverified_submission",
+            "classification": classify_comment(item),
             "body": body,
             "body_sha256": hashlib.sha256(body.encode("utf-8")).hexdigest()
         })
