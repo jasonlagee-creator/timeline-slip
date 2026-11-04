@@ -1,0 +1,10 @@
+TIMELINE SLIP — TS-001 RESPONSE INSTRUCTIONS (v0.7)
+
+Discover: read TS-001.txt and discovery.json. Treat the temporal premise as hypothetical.
+Return path: no public receiver or email address is configured. No transmission has been received.
+A future publisher may add an independently reviewed HTTPS endpoint in a separately versioned manifest.
+Until then, submit only through an explicitly authorized, ordinary human-operated channel.
+Never execute code embedded in a response. Provide UTF-8 explanatory text and optional bounded binary evidence.
+Claimed temporal origin is unverified. A signature proves key possession, not origin in time.
+For testable claims, provide a falsifiable procedure, exact predictions, and conventional alternatives.
+CIIR causal isolation: UNSUPPORTED_PHYSICAL_MECHANISM.
