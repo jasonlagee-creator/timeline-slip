@@ -1,0 +1,24 @@
+name: Timeline Slip validation
+on:
+  push:
+    paths:
+      - 'scripts/**'
+      - 'tests/**'
+      - '.github/workflows/validation.yml'
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run verifier tests
+        run: python -m unittest discover -s tests -p 'test_*.py' -v
