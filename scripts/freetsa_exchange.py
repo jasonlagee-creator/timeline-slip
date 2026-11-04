@@ -5,6 +5,7 @@ A verified timestamp is evidence of a signed imprint, not temporal communication
 """
 import argparse
 import hashlib
+import os
 import pathlib
 import urllib.request
 
@@ -13,9 +14,15 @@ from verify_timestamp_response import verify_timestamp
 
 TSA = "https://freetsa.org/tsr"
 CERTS = {
-    "tsa.crt": ("https://freetsa.org/files/tsa.crt", "8bfb0305bb64e2571ca507552ef3245cb1c2fee8728e0ff8689225081ea13467"),
-    "cacert.pem": ("https://freetsa.org/files/cacert.pem", "2151b61137ffa86bf664691ba67e7da0b19f98c758e3d228d5d8ebf27e044438")
+    "tsa.crt": ("https://freetsa.org/files/tsa.crt", os.environ.get("FREETSA_TSA_CERT_SHA256", "")),
+    "cacert.pem": ("https://freetsa.org/files/cacert.pem", os.environ.get("FREETSA_CA_CERT_SHA256", ""))
 }
+
+def require_approved_pins():
+    for name, (_, fingerprint) in CERTS.items():
+        if len(fingerprint) != 64 or any(ch not in "0123456789abcdef" for ch in fingerprint):
+            raise ValueError(f"Missing approved SHA-256 pin for {name}; no timestamp request sent")
+
 
 def fetch_pinned(url, expected, maximum=65536):
     req = urllib.request.Request(url, headers={"User-Agent": "Timeline-Slip-TRP-01/0.11"})
@@ -33,6 +40,7 @@ def exchange(directory):
     snapshot = directory / "snapshot.json"
     if not query.is_file() or not snapshot.is_file():
         raise FileNotFoundError("snapshot.json and snapshot.tsq required")
+    require_approved_pins()
     for name, (url, fingerprint) in CERTS.items():
         (directory / name).write_bytes(fetch_pinned(url, fingerprint))
     response = directory / "snapshot.tsr"
