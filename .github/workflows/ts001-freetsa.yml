@@ -24,6 +24,9 @@ jobs:
       - name: Generate RFC 3161 request
         run: python scripts/create_timestamp_request.py evidence/snapshot.json --output evidence/snapshot.tsq
       - name: Obtain and verify FreeTSA signed timestamp
+        env:
+          FREETSA_TSA_CERT_SHA256: ${{ vars.FREETSA_TSA_CERT_SHA256 }}
+          FREETSA_CA_CERT_SHA256: ${{ vars.FREETSA_CA_CERT_SHA256 }}
         run: python scripts/freetsa_exchange.py --directory evidence
       - name: Archive verified timestamp evidence
         if: success()
