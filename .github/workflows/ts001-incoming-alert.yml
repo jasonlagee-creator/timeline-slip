@@ -1,0 +1,31 @@
+name: TS-001 incoming response alert
+on:
+  issue_comment:
+    types: [created]
+permissions:
+  contents: read
+  issues: read
+jobs:
+  alert:
+    if: github.event.issue.number == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Record submission metadata
+        env:
+          COMMENT_ID: ${{ github.event.comment.id }}
+          COMMENT_URL: ${{ github.event.comment.html_url }}
+          COMMENT_AUTHOR: ${{ github.event.comment.user.login }}
+        run: |
+          echo "TS-001 new submission"
+          echo "Comment ID: $COMMENT_ID"
+          echo "Author: $COMMENT_AUTHOR"
+          echo "Review: $COMMENT_URL"
+          echo "Unverified submission; do not execute linked code."
+      - name: Write workflow summary
+        env:
+          COMMENT_URL: ${{ github.event.comment.html_url }}
+        run: |
+          echo "## Timeline Slip: new TS-001 submission" >> "$GITHUB_STEP_SUMMARY"
+          echo "Review the unverified submission at: $COMMENT_URL" >> "$GITHUB_STEP_SUMMARY"
+          echo "No temporal-origin claim is verified." >> "$GITHUB_STEP_SUMMARY"
