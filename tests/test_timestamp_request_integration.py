@@ -5,7 +5,6 @@ import shutil
 import subprocess
 import tempfile
 import unittest
-
 from scripts.create_timestamp_request import make_request
 
 @unittest.skipUnless(shutil.which("openssl"), "OpenSSL unavailable")
@@ -22,7 +21,12 @@ class TimestampRequestIntegrationTests(unittest.TestCase):
                 ["openssl", "ts", "-query", "-in", str(request), "-text"],
                 check=True, capture_output=True, text=True
             ).stdout.lower()
-            self.assertIn(expected, output.replace(":", "").replace(" ", "").replace("\n", ""))
+            lines = [line for line in output.splitlines() if re.match(r"\s*[0-9a-f]{4} - ", line)]
+            hex_bytes = []
+            for line in lines:
+                hex_column = line.split(" - ", 1)[1].split("   ", 1)[0]
+                hex_bytes.extend(re.findall(r"\b[0-9a-f]{2}\b", hex_column.replace("-", " ")))
+            self.assertEqual("".join(hex_bytes), expected)
             self.assertIn("sha256", output)
 
 if __name__ == "__main__":
