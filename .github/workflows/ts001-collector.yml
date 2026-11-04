@@ -23,6 +23,8 @@ jobs:
         run: python scripts/collect_ts001.py
       - name: Verify collected snapshot before archival
         run: python scripts/verify_snapshot.py evidence/snapshot.json evidence/snapshot.sha256
+      - name: Prepare independent witness request
+        run: python scripts/prepare_witness.py evidence/snapshot.json --output evidence/witness-request.json
       - name: Archive snapshot as workflow artifact
         uses: actions/upload-artifact@v4
         with:
