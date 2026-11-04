@@ -1,20 +1,19 @@
 {
-  "external_witness": false,
+  "release": "0.7.1",
+  "protocol": "TRP-01",
+  "integrity_algorithm": "git-blob-sha1",
+  "note": "Corrects unverified SHA-256 values in v0.7.0. Git blob IDs are verified against fetched repository objects; not independent timestamps.",
   "files": {
-    "RESPONSE-INSTRUCTIONS.txt": {
-      "bytes": 804,
-      "sha256": "146485ca1b65acfe7ba4db30d1f9c9787ab65ee6038cbd98c0c421f9b04018b7"
-    },
     "TS-001.txt": {
-      "bytes": 1078,
-      "sha256": "ebf743fe9370e4be01f09bde43466228d7da674daf140ec1fed0b857a830e12b"
+      "git_blob_sha1": "a8de153196bd342d3769b56a8415da4bf1f32ef3"
     },
     "discovery.json": {
-      "bytes": 810,
-      "sha256": "d88e762fbff4f3e913aae93ef8dd6698c7c5e40505f87c2386d903eeb3db77e3"
+      "git_blob_sha1": "2b612660fdfb2d50b13ad172642682ed1809d4b3"
+    },
+    "RESPONSE-INSTRUCTIONS.txt": {
+      "git_blob_sha1": "62249ef918bcee9449fed5c1e6a720b2f9db5432"
     }
   },
-  "protocol": "TRP-01",
-  "release": "0.7.0",
+  "external_witness": false,
   "timestamp_claim": "NONE"
 }
