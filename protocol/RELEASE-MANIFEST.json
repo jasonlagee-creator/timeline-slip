@@ -1,0 +1,20 @@
+{
+  "external_witness": false,
+  "files": {
+    "RESPONSE-INSTRUCTIONS.txt": {
+      "bytes": 804,
+      "sha256": "146485ca1b65acfe7ba4db30d1f9c9787ab65ee6038cbd98c0c421f9b04018b7"
+    },
+    "TS-001.txt": {
+      "bytes": 1078,
+      "sha256": "ebf743fe9370e4be01f09bde43466228d7da674daf140ec1fed0b857a830e12b"
+    },
+    "discovery.json": {
+      "bytes": 810,
+      "sha256": "d88e762fbff4f3e913aae93ef8dd6698c7c5e40505f87c2386d903eeb3db77e3"
+    }
+  },
+  "protocol": "TRP-01",
+  "release": "0.7.0",
+  "timestamp_claim": "NONE"
+}
