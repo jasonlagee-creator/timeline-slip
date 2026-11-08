@@ -1,0 +1,14 @@
+{
+  "protocol": "TS-FIC-001",
+  "version": "0.1",
+  "status": "DRAFT_NOT_OPEN",
+  "description": "Pre-registered future-information challenge; no active trial or evidence of temporal communication.",
+  "submission_channel": "https://github.com/jasonlagee-creator/timeline-slip/issues/1",
+  "specification": "https://github.com/jasonlagee-creator/timeline-slip/blob/main/protocol/TS-FIC-001.md",
+  "prediction_encoding": "64 lowercase hexadecimal characters",
+  "target_bits": 256,
+  "independent_chronology_required": true,
+  "independent_custodian_required": true,
+  "trial_open": false,
+  "result": null
+}
